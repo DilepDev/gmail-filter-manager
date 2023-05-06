@@ -1,4 +1,4 @@
-name: python-test
+name: Python Test
 on: [push]
 jobs:
   build_and_test:
@@ -6,26 +6,26 @@ jobs:
     steps:
       - shell: bash
         env:
-          GMAIL_TOKEN: {{ secrets.GMAIL_TOKEN}}
+          GMAIL_TOKEN: {{ secrets.GMAIL_TOKEN }}
 
-      - name: git_checkout
+      - name: Git Checkout
         uses: actions/checkout@v3
       
-      - name: setup_python
+      - name: Setup Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11.0'
 
-      - name: setup_dependancies
+      - name: Setup Dependancies
         run: pip install -r requirements.txt
 
-      - name: create_token.json
+      - name: Create token.json
         run: tocuh token.json
 
-      - name: add_secrets
+      - name: Add Secrets
         run: echo "$GMAIL_TOKEN" > token.json
 
-      - name: run_unittest
+      - name: Run unittest
         run: python -m unittest discover -vs ./test
 
 
