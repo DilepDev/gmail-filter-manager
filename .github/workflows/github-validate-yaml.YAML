@@ -1,6 +1,11 @@
 name: Validate GitHub Actions
 
 on: [push]
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   actions:
     runs-on: ubuntu-latest
