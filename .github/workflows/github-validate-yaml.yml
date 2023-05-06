@@ -1,4 +1,4 @@
-name: Validate GitHub Actions
+name: Validate-GitHubActions
 
 on: [push]
 
@@ -8,9 +8,11 @@ defaults:
 
 jobs:
   actions:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Git Checkout
         uses: actions/checkout@v3
         with:
           submodules: true
@@ -20,6 +22,7 @@ jobs:
         with:
           tool_versions: |
             action-validator 0.1.2
+
       - name: Lint Actions
         run: |
           find .github/workflows -type f \( -iname \*.yaml -o -iname \*.yml \) \
