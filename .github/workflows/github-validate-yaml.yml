@@ -1,4 +1,4 @@
-name: Validate-GitHubActions
+name: GitHub Actions Validation
 
 on: [push]
 
@@ -7,7 +7,7 @@ defaults:
     shell: bash
 
 jobs:
-  actions:
+  validate_actions:
 
     runs-on: ubuntu-latest
 

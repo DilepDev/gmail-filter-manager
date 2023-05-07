@@ -1,6 +1,11 @@
-name: Python Test
+name: CI Workflow
 
-on: [push]
+on:
+  push:
+  pull_request:
+    branches:
+      - develop
+      - main
 
 jobs:
   build_and_test:
