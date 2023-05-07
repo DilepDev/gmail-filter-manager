@@ -1,0 +1,43 @@
+name: CI Workflow
+
+on:
+  push:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}
+    
+    steps:
+    - name: Git Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11.0'
+
+    - name: Setup Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Create token.json
+      run: touch token.json
+
+    - name: Add Secrets
+      run: echo "$GMAIL_TOKEN" > token.json
+
+    - name: Run unittest
+      run: python -m unittest discover -vs ./test
+
+
