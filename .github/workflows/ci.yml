@@ -35,7 +35,7 @@ jobs:
       run: touch token.json
 
     - name: Add Secrets
-      run: echo "$GMAIL_TOKEN" > token.json
+      run: echo "$GMAIL_TOKEN" > oauth_credential.json
 
     - name: Run unittest
       run: python -m unittest discover -vs ./test
