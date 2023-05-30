@@ -26,8 +26,7 @@ class Gmail:
              https://googleapis.github.io/google-api-python-client/docs/epy/googleapiclient.discovery-module.html#build
 
         """
-        self.gmail_service = build(
-            'gmail', 'v1', credentials=oauth_credentials)
+        self.gmail_service = build('gmail', 'v1', credentials = oauth_credentials)
 
     def get_gmail_service(self):
         """
@@ -42,3 +41,4 @@ class Gmail:
     def close(self):
         """Close httplib2 connections."""
         self.gmail_service.close()
+

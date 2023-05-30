@@ -1,6 +1,5 @@
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
-
 from source.google_auth.authorization_handler import AuthorizationHandler
 
 
@@ -14,8 +13,7 @@ class OAuthCredentialHandler:
             client_secret, scopes)
 
     def set_oauth_credential_from_file(self, oauth_credential_file):
-        self.oauth_credential = Credentials.from_authorized_user_file(
-            oauth_credential_file)
+        self.oauth_credential = Credentials.from_authorized_user_file(oauth_credential_file)
 
     def get_oauth_credential(self):
         return self.oauth_credential
