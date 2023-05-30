@@ -9,9 +9,7 @@ on:
 
 jobs:
   python_build_and_test:
-
     runs-on: ubuntu-latest
-
     defaults:
       run:
         shell: bash
@@ -30,9 +28,6 @@ jobs:
 
     - name: Setup Dependencies
       run: pip install -r requirements.txt
-
-    - name: Create token.json
-      run: touch token.json
 
     - name: Add Secrets
       run: echo "$GMAIL_TOKEN" > oauth_credential.json
