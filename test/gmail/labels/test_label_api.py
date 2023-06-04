@@ -12,8 +12,7 @@ class TestLabelAPI(unittest.TestCase):
         self.label_api = LabelAPI(self.oauth_credential_handler.get_oauth_credential())
 
     def tearDown(self):
-        del self.oauth_credential_handler
-        del self.label_api
+        pass
 
 
 class TestLabelAPIGet(TestLabelAPI):
@@ -39,7 +38,7 @@ class TestLabelAPICreate(TestLabelAPI):
         super().tearDown()
         
     def test_create_label(self):
-        self.created_label = self.label_api.create_label(userId = 'me', label_dictionary = self.label)
+        self.created_label = self.label_api.create_label(userId = 'me', label = self.label)
         self.assertEqual(self.created_label['name'], self.label['name'])
 
 
@@ -52,8 +51,8 @@ class TestLabelAPIGetAll(TestLabelAPI):
         super().tearDown()
         
     def test_get_all_labels(self):
-        self.all_labels = self.label_api.get_all_labels(userId = 'me')
-        self.assertEqual('labels' in self.all_labels, True)
+        all_labels = self.label_api.get_all_labels(userId = 'me')
+        self.assertEqual('labels' in all_labels, True)
 
 
 class TestLabelAPIUpdate(TestLabelAPI):
@@ -62,22 +61,22 @@ class TestLabelAPIUpdate(TestLabelAPI):
         super().setUp()
         self.label = {'name': 'new_label'}
         self.updated_label = {'name': 'updated_label'}
-        self.created_label = self.label_api.create_label(userId = 'me', label_dictionary = self.label)
+        self.created_label = self.label_api.create_label(userId = 'me', label = self.label)
 
     def tearDown(self):
         self.label_api.delete_label(userId = 'me', label_id = self.created_label['id'])
         super().tearDown()
         
     def test_update_label(self):
-        self.assertEqual(self.label_api.update_label(userId = 'me', id = self.created_label['id'], label_dictionary = self.updated_label)['name'], self.updated_label['name'])
+        self.assertEqual(self.label_api.update_label(userId = 'me', label_id = self.created_label['id'], label = self.updated_label)['name'], self.updated_label['name'])
 
 
 class TestLabelAPIDelete(TestLabelAPI):
 
     def setUp(self):
         super().setUp()
-        self.label = {'name': 'new_label'}
-        self.created_label = self.label_api.create_label(userId = 'me', label_dictionary = self.label)
+        label = {'name': 'new_label'}
+        self.created_label = self.label_api.create_label(userId = 'me', label = label)
 
     def tearDown(self):
         super().tearDown()
