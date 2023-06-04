@@ -18,13 +18,12 @@ class LabelAPI:
         except HttpError:
             return None
         except Exception as error:
-            print(type(error))
             return error
     
     
-    def create_label(self, userId, label_dictionary):
+    def create_label(self, userId, label):
         try:
-            label = self.gmail_label_service.create(userId = userId, body = label_dictionary).execute()
+            label = self.gmail_label_service.create(userId = userId, body = label).execute()
             self.gmail.close()
             return label
         except Exception as error:
@@ -40,9 +39,9 @@ class LabelAPI:
             return error
 
 
-    def update_label(self, userId, id, label_dictionary):
+    def update_label(self, userId, label_id, label):
         try:
-            label = self.gmail_label_service.update(userId = userId, id = id, body = label_dictionary).execute()
+            label = self.gmail_label_service.update(userId = userId, id = label_id, body = label).execute()
             self.gmail.close()
             return label
         except Exception as error:
