@@ -12,7 +12,7 @@ class LabelAPI:
 
     def get_label(self, userId, label_id):
         try:
-            return label = self.gmail_label_service.get(userId = userId, id = label_id).execute()
+            return self.gmail_label_service.get(userId = userId, id = label_id).execute()
         except HttpError:
             return None
         except Exception as error:
