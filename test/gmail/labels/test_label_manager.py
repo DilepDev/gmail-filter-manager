@@ -10,7 +10,14 @@ class TestLabelManager(unittest.TestCase):
         self.oauth_credential_handler = OAuthCredentialHandler()
         self.oauth_credential_handler.set_oauth_credential_from_file(oauth_credential_file)
         self.label_manager = LabelManager(userId = 'me', oauth_credentials = self.oauth_credential_handler.get_oauth_credential())
+        
         self.label_manager.delete_all_labels()
+        
+        self.name = 'test_label'
+        self.messageListVisibility = 'show'
+        self.labelListVisibility = 'labelHide'
+        self.backgroundColor = '#efefef'
+        self.textColor = '#fad165'
 
     def tearDown(self):
         self.label_manager.delete_all_labels()
@@ -20,11 +27,6 @@ class TestLabelManagerCreate(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.name = 'test_label'
-        self.messageListVisibility = 'show'
-        self.labelListVisibility = 'labelHide'
-        self.backgroundColor = '#efefef'
-        self.textColor = '#fad165'
 
     def tearDown(self):
         super().tearDown()
@@ -42,11 +44,6 @@ class TestLabelManagerGetById(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.name = 'test_label'
-        self.messageListVisibility = 'show'
-        self.labelListVisibility = 'labelHide'
-        self.backgroundColor = '#efefef'
-        self.textColor = '#fad165'
         self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
 
     def tearDown(self):
@@ -77,7 +74,6 @@ class TestLabelManagerGetIdByName(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.name = 'test_label'
         self.created_label = self.label_manager.create_label(name = self.name)
 
     def tearDown(self):
@@ -91,11 +87,6 @@ class TestLabelManagerUpdateById(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.name = 'test_label'
-        self.messageListVisibility = 'show'
-        self.labelListVisibility = 'labelHide'
-        self.backgroundColor = '#efefef'
-        self.textColor = '#fad165'
         self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
         self.updated_label = {'name': 'updated_label'}
 
@@ -110,11 +101,6 @@ class TestLabelManagerDelete(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.name = 'test_label'
-        self.messageListVisibility = 'show'
-        self.labelListVisibility = 'labelHide'
-        self.backgroundColor = '#efefef'
-        self.textColor = '#fad165'
         self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
 
     def tearDown(self):
