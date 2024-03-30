@@ -35,6 +35,6 @@ class FilterAPI:
 
     def delete_filter(self, userId, filter_id):
         try:
-            return gmail_filter_service.delete(userId = userId, id = filter_id).execute()
+            return self.gmail_filter_service.delete(userId = userId, id = filter_id).execute()
         except Exception as error:
             return error
