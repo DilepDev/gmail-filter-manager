@@ -3,11 +3,11 @@ name: CI Workflow
 on:
   push:
     paths-ignore:
-      - '.gitattributes'
+      - .gitattributes
       - '**.MD'
   pull_request:
     paths-ignore:
-      - '.gitattributes'
+      - .gitattributes
       - '**.MD'
     branches:
       - develop
