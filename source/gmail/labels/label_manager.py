@@ -9,14 +9,14 @@ class LabelManager:
         self.labelAPI = LabelAPI(oauth_credentials)
 
 
-    def create_label(self, name, messageList_visibility = None, label_list_visibility = None, background_color = None, text_color = None):
+    def create_label(self, name, message_list_visibility = None, label_list_visibility = None, background_color = None, text_color = None):
         
         label = {}
 
         label['name'] = name
         
-        if messageList_visibility is not None:
-            label['messageListVisibility'] = messageList_visibility
+        if message_list_visibility is not None:
+            label['messageListVisibility'] = message_list_visibility
         if label_list_visibility is not None:
             label['labelListVisibility'] = label_list_visibility
 
