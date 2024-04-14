@@ -12,7 +12,9 @@ class LabelAPI:
 
     def get_label(self, userId, label_id):
         try:
-            return self.gmail_label_service.get(userId = userId, id = label_id).execute()
+            label = self.gmail_label_service.get(userId = userId, id = label_id).execute()
+            self.gmail.close()
+            return label
         except HttpError:
             return None
         except Exception as error:
@@ -21,27 +23,34 @@ class LabelAPI:
     
     def create_label(self, userId, label):
         try:
-            return self.gmail_label_service.create(userId = userId, body = label).execute()
+            label = self.gmail_label_service.create(userId = userId, body = label).execute()
+            self.gmail.close()
+            return label
         except Exception as error:
             return error
 
 
     def get_all_labels(self, userId):
         try:
-            return self.gmail_label_service.list(userId = userId).execute()
+            labels = self.gmail_label_service.list(userId = userId).execute()
+            self.gmail.close()
+            return labels
         except Exception as error:
             return error
 
 
     def update_label(self, userId, label_id, label):
         try:
-            return self.gmail_label_service.update(userId = userId, id = label_id, body = label).execute()
+            label = self.gmail_label_service.update(userId = userId, id = label_id, body = label).execute()
+            self.gmail.close()
+            return label
         except Exception as error:
             return error
 
 
     def delete_label(self, userId, label_id):
         try:
-            return self.gmail_label_service.delete(userId = userId, id = label_id).execute()
+            self.gmail_label_service.delete(userId = userId, id = label_id).execute()
+            self.gmail.close()
         except Exception as error:
             return error
