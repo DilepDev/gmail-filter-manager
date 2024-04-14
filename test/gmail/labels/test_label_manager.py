@@ -14,10 +14,10 @@ class TestLabelManager(unittest.TestCase):
         self.label_manager.delete_all_labels()
         
         self.name = 'test_label'
-        self.messageListVisibility = 'show'
-        self.labelListVisibility = 'labelHide'
-        self.backgroundColor = '#efefef'
-        self.textColor = '#fad165'
+        self.message_list_visibility = 'show'
+        self.label_list_visibility = 'labelHide'
+        self.background_color = '#efefef'
+        self.text_color = '#fad165'
 
     def tearDown(self):
         self.label_manager.delete_all_labels()
@@ -32,29 +32,29 @@ class TestLabelManagerCreate(TestLabelManager):
         super().tearDown()
         
     def test_create_label(self):
-        self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
+        self.created_label = self.label_manager.create_label(name = self.name, message_list_visibility = self.message_list_visibility, label_list_visibility = self.label_list_visibility, background_color = self.background_color, text_color = self.text_color)
         self.assertEqual(self.created_label['name'], self.name)
-        self.assertEqual(self.created_label['messageListVisibility'], self.messageListVisibility)
-        self.assertEqual(self.created_label['labelListVisibility'], self.labelListVisibility)
-        self.assertEqual(self.created_label['color']['backgroundColor'], self.backgroundColor)
-        self.assertEqual(self.created_label['color']['textColor'], self.textColor)
+        self.assertEqual(self.created_label['messageListVisibility'], self.message_list_visibility)
+        self.assertEqual(self.created_label['labelListVisibility'], self.label_list_visibility)
+        self.assertEqual(self.created_label['color']['backgroundColor'], self.background_color)
+        self.assertEqual(self.created_label['color']['textColor'], self.text_color)
 
 
 class TestLabelManagerGetById(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
+        self.created_label = self.label_manager.create_label(name = self.name, message_list_visibility = self.message_list_visibility, label_list_visibility = self.label_list_visibility, background_color = self.background_color, text_color = self.text_color)
 
     def tearDown(self):
         super().tearDown()
 
     def test_get_label_by_Id(self):
         self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['name'], self.name)
-        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['messageListVisibility'], self.messageListVisibility)
-        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['labelListVisibility'], self.labelListVisibility)
-        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['color']['backgroundColor'], self.backgroundColor)
-        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['color']['textColor'], self.textColor)
+        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['messageListVisibility'], self.message_list_visibility)
+        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['labelListVisibility'], self.label_list_visibility)
+        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['color']['backgroundColor'], self.background_color)
+        self.assertEqual(self.label_manager.get_label_by_id(self.created_label['id'])['color']['textColor'], self.text_color)
 
 
 class TestLabelManagerGetAll(TestLabelManager):
@@ -87,7 +87,7 @@ class TestLabelManagerUpdateById(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
+        self.created_label = self.label_manager.create_label(name = self.name, message_list_visibility = self.message_list_visibility, label_list_visibility = self.label_list_visibility, background_color = self.background_color, text_color = self.text_color)
         self.updated_label = {'name': 'updated_label'}
 
     def tearDown(self):
@@ -101,13 +101,27 @@ class TestLabelManagerDelete(TestLabelManager):
 
     def setUp(self):
         super().setUp()
-        self.created_label = self.label_manager.create_label(name = self.name, messageListVisibility = self.messageListVisibility, labelListVisibility = self.labelListVisibility, backgroundColor = self.backgroundColor, textColor = self.textColor)
+        self.created_label = self.label_manager.create_label(name = self.name, message_list_visibility = self.message_list_visibility, label_list_visibility = self.label_list_visibility, background_color = self.background_color, text_color = self.text_color)
 
     def tearDown(self):
         super().tearDown()
         
     def test_delete_label(self):
         self.label_manager.delete_label_by_id(label_id = self.created_label['id'])
+        self.assertEqual(self.label_manager.get_label_by_id(label_id = self.created_label['id']), None)
+
+
+class TestLabelManagerDeleteAll(TestLabelManager):
+
+    def setUp(self):
+        super().setUp()
+        self.created_label = self.label_manager.create_label(name = self.name, message_list_visibility = self.message_list_visibility, label_list_visibility = self.label_list_visibility, background_color = self.background_color, text_color = self.text_color)
+
+    def tearDown(self):
+        super().tearDown()
+
+    def test_delete_all_labels(self):
+        self.label_manager.delete_all_labels()
         self.assertEqual(self.label_manager.get_label_by_id(label_id = self.created_label['id']), None)
 
 
