@@ -9,9 +9,11 @@ on:
     paths-ignore:
       - .gitattributes
       - '**.MD'
+      - '.devcontainer/**'
     branches:
       - develop
       - main
+      - '.devcontainer/**'
 
 jobs:
   python_build_and_test:

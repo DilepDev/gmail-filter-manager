@@ -8,5 +8,10 @@
             "installOhMyZsh": "true"
         }
     },
+    "customizations": {
+        "vscode": {
+          "extensions": ["ms-python.python"]
+        }
+      },
 	"remoteUser": "vscode"
 }
