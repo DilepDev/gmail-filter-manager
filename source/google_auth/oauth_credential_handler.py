@@ -29,3 +29,4 @@ class OAuthCredentialHandler:
     def write_oauth_credential_to_file(self, oauth_credential_file,):
         with open(oauth_credential_file, 'w', encoding = "utf-8") as oauth_credential:
             oauth_credential.write(self.oauth_credential.to_json())
+        oauth_credential.close()
