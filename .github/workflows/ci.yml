@@ -5,6 +5,7 @@ on:
     paths-ignore:
       - .gitattributes
       - '**.MD'
+      - '.devcontainer/**'
   pull_request:
     paths-ignore:
       - .gitattributes
@@ -13,7 +14,6 @@ on:
     branches:
       - develop
       - main
-      - '.devcontainer/**'
 
 jobs:
   python_build_and_test:
