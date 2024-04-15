@@ -1,6 +1,9 @@
 name: GitHub Actions Validation
 
-on: [push]
+on: 
+  push:
+    paths-ignore:
+      - '!.github/**'
 
 defaults:
   run:
