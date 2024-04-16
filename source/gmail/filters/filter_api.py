@@ -32,9 +32,9 @@ class FilterAPI:
 
     def get_all_filters(self, userId):
         try:
-            filter = self.gmail_filter_service.list(userId = userId).execute()
+            filters = self.gmail_filter_service.list(userId = userId).execute()
             self.gmail.close()
-            return filter
+            return filters
         except Exception as error:
             return error
 

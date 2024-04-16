@@ -32,9 +32,9 @@ class LabelAPI:
 
     def get_all_labels(self, userId):
         try:
-            label = self.gmail_label_service.list(userId = userId).execute()
+            labels = self.gmail_label_service.list(userId = userId).execute()
             self.gmail.close()
-            return label
+            return labels
         except Exception as error:
             return error
 
@@ -50,8 +50,7 @@ class LabelAPI:
 
     def delete_label(self, userId, label_id):
         try:
-            label = self.gmail_label_service.delete(userId = userId, id = label_id).execute()
+            self.gmail_label_service.delete(userId = userId, id = label_id).execute()
             self.gmail.close()
-            return label
         except Exception as error:
             return error

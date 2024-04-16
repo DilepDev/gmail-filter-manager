@@ -2,7 +2,15 @@ name: CI Workflow
 
 on:
   push:
+    paths-ignore:
+      - '.gitattributes'
+      - '**.MD'
+      - '.devcontainer/**'
   pull_request:
+    paths-ignore:
+      - '.gitattributes'
+      - '**.MD'
+      - '.devcontainer/**'
     branches:
       - develop
       - main
