@@ -2,8 +2,11 @@ name: GitHub Actions Validation
 
 on: 
   push:
-    paths-ignore:
-      - '!.github/**'
+    paths:
+      - '.github/**'
+  pull_request:
+    paths:
+      - '.github/**'
 
 defaults:
   run:
