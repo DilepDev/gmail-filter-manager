@@ -64,7 +64,7 @@ class FilterManager:
     def get_filterId_by_filter(self, filter):
 
         filters = self.filterAPI.get_all_filters(userId = self.userId)
-        expression = jmespath.compile(f'filter[?criteria==`{json.dumps(filter['criteria'])}` && action==`{json.dumps(filter['action'])}`].id | [0]')
+        expression = jmespath.compile(f"filter[?criteria==`{json.dumps(filter['criteria'])}` && action==`{json.dumps(filter['action'])}`].id | [0]")
         filter_id = expression.search(filters)
 
         return filter_id
