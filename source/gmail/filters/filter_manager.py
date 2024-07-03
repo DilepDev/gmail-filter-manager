@@ -27,10 +27,9 @@ class FilterManager:
             criteria['size'] = size
         if size_comparison is not None:
             criteria['sizeComparison'] = size_comparison
-        if has_attachement is not False:
-            criteria['hasAttachment'] = has_attachement
-        if exclude_chats is not False:
-            criteria['excludeChats'] = exclude_chats
+
+        criteria['hasAttachment'] = has_attachement
+        criteria['excludeChats'] = exclude_chats
 
         return criteria
 
